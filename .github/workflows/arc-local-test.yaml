@@ -1,0 +1,24 @@
+name: ARC Local Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  hello-arc:
+    runs-on: my-arc-runners    # must match runnerScaleSetName
+
+    steps:
+      - name: Hello from Minikube
+        run: |
+          echo "Hostname: $(hostname)"
+          echo "Kernel: $(uname -r)"
+          echo "CPU cores: $(nproc)"
+          echo "Memory: $(free -h | grep Mem)"
+
+      - name: Simulate work
+        run: sleep 15
+
+      - name: Done
+        run: echo "Job complete — this pod will now terminate"
