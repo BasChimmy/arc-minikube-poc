@@ -8,6 +8,8 @@ on:
 jobs:
   hello-arc:
     runs-on: my-arc-runners    # must match runnerScaleSetName
+    container:
+      image: ubuntu:22.04
 
     steps:
       - name: Hello from Minikube
